@@ -1,0 +1,218 @@
+   53  git config --global user.name "Happy-gamer-05" 
+   54  git config --global user.email "hg0526104@gmail.com"
+   55  git config user.name
+   56  git config user.email
+   57  git clone https://github.com/Happy-gamer-05/ditiss_feb_2025_repo_1.git
+   58  ls
+   59  cd ditiss_feb_2025_repo_1/
+   60  gitstatus
+   61  git status
+   62  sudo nano hello.py
+   63  ls
+   64  git status
+   65  git log
+   66  git add hello.py 
+   67  git status
+   68  git commit . -m
+   69  git commit . -m 'creatinf version 1 of the hello.py'
+   70  git status 
+   71  git log 
+   72  git branch -M main
+   73  git push -u origin main
+   74  cd ..
+   75  cd
+   76  mkdir ditiss_feb_2025_repo_2
+   77  ls
+   78  cd ditiss_feb_2025_repo_
+   79  cd ditiss_feb_2025_repo_2
+   80  clear
+   81  git init
+   82  git status 
+   83  sudo nano hello.py
+   84  git status
+   85  git add hello.py 
+   86  git status 
+   87  sudo nano hello.c
+   88  git status 
+   89  git commit . -m 'commit hello.py using git init'
+   90  git status 
+   91  git log
+   92  git add .
+   93  git status 
+   94  git commit . -m 'this is a c file to commit'
+   95  git log 
+   96  git remote add origin https://github.com/Happy-gamer-05/ditiss_feb_2025_repo_2.git
+   97  git push -u origin main
+   98  git branch -M main
+   99  git push -u origin main
+  100  cd ..
+  101  ls
+  102  cd
+  103  clear
+  104  ls
+  105  clear
+  106  git clone https://github.com/Happy-gamer-05/ditiss_feb_2025_repo_3.git
+  107  cd ditiss_feb_2025_repo_3
+  108  sudo nano hello.py
+  109  git status 
+  110  git add .
+  111  git commit . -m 'this is file for learning branching (b1 main)'
+  112  git branch -M main 
+  113  git push -u origin main
+  114  git log
+  115  git checkout -b bug-1-branch
+  116  git branch 
+  117  ls
+  118  sudo nano hello.py 
+  119  git commit . -m 'bug-1-branch fixes'
+  120  git branch bug-2-branch
+  121  git checkout bug-2-branch 
+  122  git branch 
+  123  sudo nano hello.py 
+  124  git commit . -m 'bug-2-branch fixes'
+  125  git merge bug-1-branch 
+  126  git switch main 
+  127  git branch 
+  128  git merge bug-2-branch 
+  129  git status 
+  130  git push -u origin main 
+  131  history
+
+################################################################################################################
+Lab 1
+################################################################################################################
+windows
+########################################################################################################
+    1  git config --global user.name
+    2  git config --global user.name "Happy-gamer-05"
+    3  git config --global user.name
+    4  git config --global user.email "hg0526104@gmail.com"
+    5  git config --global user.email
+    6  git config user.name
+    7  git config user.email
+    8  git status
+    9  git init
+   10  git status
+   11  nano demo.txt
+   12  cat demo.txt
+   13  git branch
+   14  git branch -M main
+   15  git branch
+   16  git status
+   17  git add --all
+   18  git status
+   19  git commit . -m 'this is a test commit'
+   20  git log
+   21  git commit -oneline
+   22  git commit --oneline
+   23  git log --oneline
+   24  clear
+   25  history
+   26  git remote add origin https://github.com/Happy-gamer-05/ditiss_feb_2025_repo_4.git
+   27  git branch -M main
+   28  git push -u origin main
+   29  git branch
+   30  nano file2.txt
+   31  git add file2.txt
+   32  git status
+   33  rm file2.txt
+   34  git status
+   35  git restore file2.txt
+   36  git commit file2.txt -m 'This is commit for file2'
+   37  git push -u origin main
+   38  history
+##################################################################################################################
+Linux
+##################################################################################################################
+ 165  git clone https://github.com/Happy-gamer-05/ditiss_feb_2025_repo_5.git
+  166  cd ditiss_feb_2025_repo_
+  167  cd ditiss_feb_2025_repo_5
+  168  nano hello.sh
+  169  cat hello.sh 
+  170  git add hello.sh 
+  171  git commit hello.sh -m 'commiting hello.sh file'
+  172  git status
+  173  git log
+  175  git remote origin remove
+  176  git remote origin removeclear
+  177  clear
+  178  git remote remove origin 
+  179  git remote -v
+  181  git remote -v
+  182  git branch -M main
+  183  git push -u origin main
+  184  clear
+  185  nano hello.sh 
+  186  cat hello.sh 
+  187  nano test.py
+  188  cat test.py 
+  189  git add --all
+  190  git status 
+  191  git commit . -m '2nd commit'
+  192  git push -u origin main
+  193  clear
+  194  git branch b1
+  195  git branch b2
+  196  git branch
+  197  git checkout b1
+  198  git branch
+  199  nano hello.sh 
+  200  nano test.py 
+  201  git status 
+  202  git add .
+  203  git status
+  204  git commit . -m 'edited in b1'
+  205  git switch b2
+  206  nano hello.sh 
+  207  nano test.py 
+  208  git add .
+  209  git commit . -m 'commited in b2'
+  210  git merge b1
+  211  git status
+  212  vi hello.sh 
+  213  git status
+  214  git add hello.sh 
+  215  git merge b1
+  216  git status
+  217  git add test.py 
+  218  git status
+  219  git merge b1
+  220  git status
+  221  ls
+  222  git branch
+  223  ls
+  224  vi test.py 
+  225  git status
+  226  git add .
+  227  git commit -m "b2 editited again"
+  228  git log --oneline
+  229  git checkout b1
+  230  l
+  231  vi test.py 
+  232  cat test.py 
+  233  git status
+  234  ls
+  235  cat hello.sh 
+  236  cat test.py 
+  237  git checkout b2
+  238  ls
+  239  cat hello.sh 
+  240  git branch
+  241  git merge b1
+  242  git status
+  243  cat test.py 
+  244  clear
+  245  git branch 
+  246  nano test.py 
+  247  nano hello.sh 
+  248  git add .
+  249  git commit . -m 'commit on b1'
+  250  git merge b1
+  251  git switch main 
+  252  git merge b2
+  253  git push -u origin main 
+  254  git branch -d b1
+  255  git branch -d b2
+  256  clear
+  257  history
+
