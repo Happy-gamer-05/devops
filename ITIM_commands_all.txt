@@ -1,0 +1,307 @@
+  449  docker pull nginx
+  450  docker images
+  451  docker rmi ab
+  452  docker rmi ab -f
+  453  docker rmi 6c -f
+  454  ls
+  455  clear
+  456  docker images
+  457  docker images prune
+  458  docker image prune
+  459  clear
+  460  docker system df
+  461  docker ps
+
+###########################################################
+running a container
+###########################################################
+  462  docker run -dit --name=my-ngnix
+  463  docker run -dit --name=my-nginx
+  464  docker run -dit --name=my-nginx nginx
+  465  docker exec my-nginx
+  466  docker exec my-nginx /bin/bash
+  467  docker exec -it my-nginx /bin/bash
+  468  docker
+  469  clear
+  470  docker ps
+  471  docker inspect my-nginx
+  472  docker stop my-nginx
+  473  ls
+  474  clear
+  475  docker ps
+
+############################################################
+running a container and forwording it to localhosts port : 8080
+############################################################
+  476  docker run --name=my-nginx -d -p 8080:80 nginx
+  477  docker ps -all
+  478  docker ps
+  479  docker rm f1
+  480  docker run --name=my-nginx -d -p 8080:80 nginx
+  481  ls
+  482  ip a
+  483  docker ps
+  484  clear
+  485  ip a
+  486  clear
+
+############################################################
+creating sql container and accesing it from localhost 
+############################################################
+  487  docker volume create mysql-data
+  488  docker run -d --name my-sql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=cdac -v mysql_data:/var/lib/mysql -p 3306:3306 mysql:8
+  489  docker exec -it ef my-sql
+  490  docker exec -dit ef my-sql
+  491  docker exec -it ef my-sql /bin/bash
+  492  docker ps
+  493  docker exec -it 38 /bin/bash
+  494  docker exec -it ef /bin/bash
+  495  docker
+  496  docker ps
+  497  docker rm ef
+  498  docker stop ef
+  499  docker rm ef
+  500  docker stop 38
+  501  docker rm 38
+  502  docekr ps
+  503  docker ps
+  504  clear
+  505  docker container prune
+  506  docker ps -all
+  507  docker container prune
+  508  docker ps -all
+  509  clear
+  510  docker ps
+  511  clear
+  512  ls
+  513  cd prac_1/
+  514  ls
+
+###################################################################
+using docker file to creating a container and pusing it to docker hub
+###################################################################
+  515  sudo nano dockerfile
+  516  sudo nano Dockerfile
+  517  ls
+  518  docker build prac-python-1 .
+  519  docker build -t prac-python-1 .
+  520  docker  --debug
+  521  docker --debug
+  522  clear
+  523  docker images
+  524  docker run -it prac-puthon-1
+  525  docker run -it prac-python-1
+  526  docker login -u hg0526104@gmail.com
+  527  docker tag prac-python-1 happygamer05/prac-python-1:1.0
+  528  docker push happygamer05/prac-python-1:1.0
+  529  ls
+  530  clear
+###################################################################
+using docker-compose.yml to creating a container and running it
+###################################################################
+  531  sudo nano docker-compose.yml
+  532  ls
+  533  cat docker-compose.yml
+  534  cat Dockerfile
+  535  cat hello.py
+  536  sudo nano docker-compose.yml
+  537  docker-compose up --build
+  538  docker compose up --build
+  539  clear
+  540  exit
+###################################################################
+creating a docker swarm service to run replicas in docker  
+###################################################################
+  544  docker service create nginx
+  545  docker service ls
+  552  docker service update h9 --replicas 5
+  553  docker service ls
+  554  docker ps
+  555  sudo docker stop 9c
+  556  docker ps
+  557  clear
+  558  docker service ls
+  562  docker service rm h9
+  563  docker service ls
+  564  docker ps
+  565  clear
+  566  history
+###################################################################
+creating a physical docker swarm
+###################################################################
+  542  docker swarm init --advertise-addr 192.168.1.134
+  543  clear
+######################################################################
+using kubectl to create deployment and scaling it to 5 pods to 1 pods
+######################################################################
+
+utkarsh@utkarsh-VMware-Virtual-Platform:~$ kubectl create deploy my-apache2 --image httpd
+deployment.apps/my-apache2 created
+
+utkarsh@utkarsh-VMware-Virtual-Platform:~$ kubectl get deploy
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+my-apache2   1/1     1            1           31s
+
+utkarsh@utkarsh-VMware-Virtual-Platform:~$ kubectl scale deploy my-apache2 --replicas 5
+deployment.apps/my-apache2 scaled
+
+utkarsh@utkarsh-VMware-Virtual-Platform:~$ kubectl get deploy
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+my-apache2   5/5     5            5           4m25s
+
+######################################################################
+creating an nginx pod and changing its website content
+######################################################################
+utkarsh@utkarsh-VMware-Virtual-Platform:~$ docker run --name=my-nginx -p 8080:80 nginx
+
+utkarsh@utkarsh-VMware-Virtual-Platform:~$ docker exec -it my-nginx /bin/bash
+root@924a09be0c7e:/# ls
+bin   dev                  docker-entrypoint.sh  home  lib64  mnt  proc  run   srv  tmp  var
+boot  docker-entrypoint.d  etc                   lib   media  opt  root  sbin  sys  usr
+
+root@924a09be0c7e:/usr/share/nginx/html# mv index.html index.orig 
+
+root@924a09be0c7e:/usr/share/nginx/html# echo "Welcome to CDAC" > index.html
+
+root@924a09be0c7e:/usr/share/nginx/html# ls
+50x.html  index.html  index.orig
+root@924a09be0c7e:/usr/share/nginx/html# exit
+exit
+
+######################################################################
+creating an nginx pod and changing its website content using dockerfile and nginx.yml
+######################################################################
+
+utkarsh@utkarsh-VMware-Virtual-Platform:~/nginx$ cat Dockerfile 
+FROM nginx:latest
+RUN mv /usr/share/nginx/html/index.html /usr/share/nginx/html/index.orig
+RUN echo "Welcome to CDAC" > /usr/share/nginx/html/index.html
+
+utkarsh@utkarsh-VMware-Virtual-Platform:~/nginx$ cat nginx.yml 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-cdac
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx-cdac
+  template:
+    metadata:
+      labels:
+        app: nginx-cdac
+    spec:
+      containers:
+      - name: nginx-cdac
+        image: nginx-cdac
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-cdac-service
+spec:
+  type: NodePort
+  selector:
+    app: nginx-cdac
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    nodePort: 30000
+utkarsh@utkarsh-VMware-Virtual-Platform:~/nginx$
+
+##########################################################################
+AWS S3 to s3 transfer
+##########################################################################
+
+Search for S3  … Click Create bucket
+
+Everything leave as default … Bucket name: yourprn-source-bucket
+
+Repeat … Bucket name: yourprn-destination-bucket
+
+Note: bucket name must be globally unique
+
+Search for lambda -> Create function -> Author from scratch -> Function name: my-lambda-s3-function -> Runtime: Python 3.12 -> Permissions -> Change default execution role -> Execution role -> Create a new role with basic Lambda permissions -> Create function
+
+Code -> Replace the existing code with the code on the next slide and click Deploy button
+############
+
+python file
+############
+import boto3
+import urllib.parse
+
+s3 = boto3.client('s3')
+target_bucket_name = 's3-destination-bucket-250240123055'  # Replace with your target bucket name
+
+def lambda_handler(event, context):
+    source_bucket_name = 's3-source-bucket-250240123055'
+    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+
+    try:
+        copy_source = {'Bucket': source_bucket_name, 'Key': key}
+        s3.copy(copy_source, target_bucket_name, key)
+        print(f"Successfully copied {key} from {source_bucket_name} to {target_bucket_name}")
+    except Exception as e:
+        print(f"Error copying {key}: {e}")
+        raise e
+
+############
+
+Still in Lambda … Configuration -> Permissions -> Click on the role name (e.g. myLambdaFunction-role-6qhvpscu) -> Add permissions button -> Attach policies -> AWSLambdaBasicExecutionRole -> Add permissions
+
+Again Add permissions button -> Create inline policy -> JSON
+
+Paste the policy shown on the next slide, remember to change source and destination bucket names -> Next -> Give a policy name (e.g. Lambda-S3-Permission-Policy) -> Create policy
+
+Search for S3 -> Open source bucket -> Properties -> Event notifications -> Create event notification -> Event notification name: lambda-trigger -> Events: Select All object create events -> Destination: Choose Lambda function -> Under Lambda function, select your lambda function name -> Save changes	
+
+###########
+
+permission file
+#################
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"s3:GetObject"
+			],
+			"Resource": "arn:aws:s3:::s3-source-bucket-250240123055/*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"s3:PutObject"
+			],
+			"Resource": "arn:aws:s3:::s3-destination-bucket-250240123055/*"
+		}
+	]
+}
+
+#############################################################
+create a VPC
+#############################################################
+vpc
+
+subnet - 2
+
+route table - 2
+in pub rt add a route to ig 
+
+internet gate way - 1
+ec2 2
+
+ppk to pem file
+for taking access of private ec2
+
+
+
+
+
