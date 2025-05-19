@@ -1,0 +1,330 @@
+##############################################################################
+dOCKER Python EXAMPLE
+##############################################################################
+
+ditiss@Ubuntu-DevOps:~/utkarsh-python$ cat hello.py 
+print("Hello first python image push")
+
+ditiss@Ubuntu-DevOps:~/utkarsh-python$ cat Dockerfile 
+from python:3.11-slim-buster
+Workdir /utkarsh/python
+copy hello.py /utkarsh/python
+run chmod 777 hello.py
+cmd ["python", "./hello.py"]
+
+
+  153  mkdir utkarsh-python
+  154  cd utkarsh-python/
+  155  sudo nano hello.py
+  156  sudo nano Dockerfile
+  157  docker build -t utkarsh-python-1 .
+  158  sudo docker build -t utkarsh-python-1 .
+  159  docker run utkarsh-python-1
+  160  sudo docker run utkarsh-python-1
+  161  docker login -u hg0526104@gmail.com
+  162  docker tag utkarsh-python-1 happygamer05/utkarsh-python-1:1.0
+  163  sudo docker tag utkarsh-python-1 happygamer05/utkarsh-python-1:1.0
+  164  sudo docker push happygamer05/utkarsh-python-1
+  165  sudo docker push happygamer05/utkarsh-python-1:1.0
+
+
+###############################################################################
+docker C Example
+###############################################################################  
+
+ditiss@Ubuntu-DevOps:~$ cat /home/ditiss/Desktop/docker_c_example/Dockerfile 
+from gcc:latest
+workdir /cdac/ditiss/mycode
+copy user_input.c /cdac/ditiss/mycode
+run gcc -o user_input user_input.c
+cmd ["./user_input"]
+
+ditiss@Ubuntu-DevOps:~$ cat /home/ditiss/Desktop/docker_c_example/user_input.c 
+#include <stdio.h>
+
+int main(){
+        char name[100];
+        int age;
+        printf("Enter Your Name :");
+        scanf("%s",name);
+        printf("Enter Your Age :");
+        scanf("%d",&age);
+        printf("Hello, %s\t of age %d",name,age);
+        return 0;
+}
+
+
+  167  mkdir docker_c_example
+  168  cd docker_c_example/
+  169  sudo nano user_input.c
+  170  sudo nano Dockerfile
+  171  docker build -t my-ditiss-c:1.0
+  172  docker build -t my-ditiss-c:1.0 .
+  173  sudo docker build -t my-ditiss-c:1.0 .
+  174  sudo docker run my-ditiss-c:1.0
+  175  sudo docker run -it my-ditiss-c:1.0
+  176  docker tag my-ditiss-c:1.0 happygamer05/my-ditiss-c:1.0
+  177  sudo docker tag my-ditiss-c:1.0 happygamer05/my-ditiss-c:1.0
+  178  sudo docker push happygamer05/my-ditiss-c:1.0
+  179  ls
+  180  nano user_input.c 
+  181  sudo nano user_input.c 
+  182  docker build -t my-ditiss-c:1.0 .
+  183  sudo docker build -t my-ditiss-c:1.0 .
+  184  nano user_input.c 
+  185  sudo nano user_input.c 
+  186  sudo docker build -t my-ditiss-c:1.0 .
+  187  sudo docker build -t my-ditiss-c:1.1 .
+  188  sudo docker run my-ditiss-c:1.1
+  189  sudo docker run -it my-ditiss-c:1.1
+  190  sudo nano user_input.c 
+  191  sudo docker build -t my-ditiss-c:1.1 .
+  192  sudo docker run -it my-ditiss-c:1.1
+  193  sudo docker tag my-ditiss-c happygamer05/my-ditiss-c:1.1
+  194  sudo docker tag my-ditiss-c:1.1 happygamer05/my-ditiss-c:1.1
+  195  docker push my-ditiss-c:1.1
+  196  sudo docker push my-ditiss-c:1.1
+  197  docker login -u hg0526104@gmail.com
+  198  sudo docker push my-ditiss-c:1.1
+  199  sudo docker push happygamer05/my-ditiss-c:1.1
+  200  history
+
+###############################################################################
+Docker Java Install
+###############################################################################
+ditiss@Ubuntu-DevOps:~$ cat /home/ditiss/Desktop/java_docker_example/Dockerfile 
+from openjdk:12-alpine
+copy . /my__java_app
+workdir  /my__java_app
+run javac *.java
+cmd ["java", "helloworld"]
+ditiss@Ubuntu-DevOps:~$ cat /home/ditiss/Desktop/java_docker_example/
+Dockerfile       helloworld.java  
+
+ditiss@Ubuntu-DevOps:~$ cat /home/ditiss/Desktop/java_docker_example/helloworld.java 
+public class helloworld {
+     public static void main(String[] args){
+        System.out.println("hello world");
+	int a=10,b=20,c;
+        c = a+b;
+    	System.out.println("sum of a+b is" +c);
+	} 
+}
+ditiss@Ubuntu-DevOps:~$ 
+
+
+  134  sudo mkdir java_docker_example
+  135  cd java_docker_example/
+  136  nano helloworld.java
+  137  suda nano helloworld.java
+  138  sudo nano helloworld.java
+  139  sudo nano Dockerfile
+  140  docker build -t my-ditiss-java
+  141  docker build -t my-ditiss-java .
+  142  sudo docker build -t my-ditiss-java .
+  143  sudo docker run my-ditiss-java
+  144  ls
+  145  nano helloworld.java 
+  146  sudo nano helloworld.java 
+  147  sudo docker run my-ditiss-java
+  148  sudo nano helloworld.java 
+  149  sudo docker build -t my-ditiss-java .
+  150  sudo nano helloworld.java 
+  151  sudo docker build -t my-ditiss-java .
+  152  sudo docker run my-ditiss-java
+  153  cat Dockerfile 
+  154  docker login 
+  155  docker tag my-ditiss-java happygamer05/my-ditiss-java:1.0
+  156  sudo docker tag my-ditiss-java happygamer05/my-ditiss-java:1.0
+  157  sudo docker push my-ditiss-java:1.0
+  158  sudo docker push happygamer05/my-ditiss-java:1.0
+  159  docker login
+  160  sudo docker login -u hg0526104@gmail.com
+  161  sudo docker tag my-ditiss-java happygamer05/my-ditiss-java:1.0
+  162  sudo docker push happygamer05/my-ditiss-java:1.0
+  163  sudo docker tag my-ditiss-java happygamer05/my-ditiss-java:1.1
+  164  sudo docker push happygamer05/my-ditiss-java:1.1
+  165  clear
+
+
+####################################################################################
+Docker (Changing Default of a service)
+####################################################################################
+
+  201  clear
+  202  docker run -dit --rm --name tomcat-container -p 7777:8080 tomcat:8.0
+  203  sudo docker run -dit --rm --name tomcat-container -p 7777:8080 tomcat:8.0
+  204  docker exec -it tomcat-container /bin/bash
+  205  sudo docker exec -it tomcat-container /bin/bash
+  206  cd
+  207  nano index.html
+  208  docker stop tomcat-container
+  209  sudo docker stop tomcat-container
+  210  docker run -dit --name web5 -p 7777:80 httpd
+  211  sudo docker run -dit --name web5 -p 7777:80 httpd
+  212  sudo docker cp index.html web5:/usr/local/apache2/htdocs/index.html
+  213  history
+
+
+######################################################################################
+tomcat to my sql
+######################################################################################
+
+  192  docker network create my-network
+
+  195  sudo docker container run --name utkarsh-sql -v /data/mysql_data:/var/lib/mysql --network my-network -e MYSQL_ROOT_PASSWORD=pass -d mysql:latest
+
+  207  sudo docker container run --name utkarsh-tomcat --network my-network -p 7777:8080 -v /data/mytomcat_data:/usr/local/tomcat/webapps -d tomcat:8
+
+  208  sudo docker exec -it utkarsh-tomcat /bin/bash
+
+    1  apt-get update
+    2  apt-get install -y mysql-client
+    3  mysql -h utkarsh-sql -uroot -ppass
+    4  history
+#######################################################################################
+Docker compose
+########################################################################################
+docker-compose.yml
+###################
+
+services:
+  java-helloworld:
+    build: .
+    container_name: utkarsh_java_con
+    command: ["java","HelloWorld"]
+
+folder:
+#########
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ ls
+docker-compose.yml  Dockerfile  helloworld.java
+
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ cat Dockerfile 
+from openjdk:12-alpine
+copy . /my__java_app
+workdir  /my__java_app
+run javac *.java
+cmd ["java", "helloworld"]
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ cat helloworld.java 
+public class helloworld {
+     public static void main(String[] args){
+        System.out.println("hello world");
+	int a=10,b=20,c;
+        c = a+b;
+    	System.out.println("sum of a+b is" +c);
+	} 
+}
+
+
+#######################################################################
+Docker Swarm
+############################################################################
+
+  277  Docker swarm init --advertise-addr 192.168.233.137
+  278  sudo docker swarm init --advertise-addr 192.168.233.137
+  279  docker service create nginx
+  280  sudo docker service create nginx
+  281  docker service ls 
+  282  sudo docker service ls 
+  283  docker service ls
+  284  sudo docker service ls
+  285  sudo docker op date td --replicas 5
+  286  sudo docker up date td --replicas 5
+  287  sudo docker update td --replicas 5
+  288  sudo docker service update td --replicas 5
+  289  docker service ls
+  290  sudo docker service ls
+  291  sudo docker ps
+  292  sudo docker stop 8d
+  293  sudo docker rm 8d
+  294  docker service ls
+  295  sudu docker service ls
+  296  sudo docker service ls
+  297  sudo docker ps
+  298  history
+
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker swarm init --advertise-addr 192.168.233.137
+Swarm initialized: current node (xtrjxaqcvaanea8npugirhhd4) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-45ez3r7h9h47kyh1shv3fdaaklz32km7ezika8hcfra9pwz261-9bp7xqr7wj0b1y2tk7kyneqg1 192.168.233.137:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker service create nginx
+tdf0fxe0i9vf9hxosx637pgn5
+overall progress: 1 out of 1 tasks 
+1/1: running   
+verify: Service tdf0fxe0i9vf9hxosx637pgn5 converged 
+
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker service ls 
+ID             NAME                MODE         REPLICAS   IMAGE          PORTS
+tdf0fxe0i9vf   hopeful_aryabhata   replicated   1/1        nginx:latest   
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker service ls
+ID             NAME                MODE         REPLICAS   IMAGE          PORTS
+tdf0fxe0i9vf   hopeful_aryabhata   replicated   1/1        nginx:latest   
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker op date td --replicas 5
+unknown flag: --replicas
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker service update td --replicas 5
+td
+overall progress: 5 out of 5 tasks 
+1/5: running   
+2/5: running   
+3/5: running   
+4/5: running   
+5/5: running   
+verify: Service td converged 
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker service ls
+ID             NAME                MODE         REPLICAS   IMAGE          PORTS
+tdf0fxe0i9vf   hopeful_aryabhata   replicated   5/5        nginx:latest   
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS     NAMES
+5fc8723bbee8   nginx:latest   "/docker-entrypoint.…"   About a minute ago   Up 59 seconds       80/tcp    hopeful_aryabhata.5.xstowh6vg8e70gpwh9fd8a8h2
+d61e0f819454   nginx:latest   "/docker-entrypoint.…"   About a minute ago   Up 59 seconds       80/tcp    hopeful_aryabhata.2.wcrwgil66b6n2k8qvpbowlls7
+6f6d16fe3a60   nginx:latest   "/docker-entrypoint.…"   About a minute ago   Up About a minute   80/tcp    hopeful_aryabhata.4.uqqvnqbaxcwqh5reknik0xqo0
+def35318ad96   nginx:latest   "/docker-entrypoint.…"   About a minute ago   Up About a minute   80/tcp    hopeful_aryabhata.3.wp8512qxphqvg2sdu3128heoz
+8d33bbf27963   nginx:latest   "/docker-entrypoint.…"   6 minutes ago        Up 6 minutes        80/tcp    hopeful_aryabhata.1.7wsidn27vpcwy0nz0mu92qc5c
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker stop 8d
+8d
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker rm 8d
+8d
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker service ls
+ID             NAME                MODE         REPLICAS   IMAGE          PORTS
+tdf0fxe0i9vf   hopeful_aryabhata   replicated   5/5        nginx:latest   
+
+ditiss@Ubuntu-DevOps:~/docker_compose_demo$ sudo docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES
+6ddcdb7fb5d3   nginx:latest   "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes   80/tcp    hopeful_aryabhata.1.cj4pnhorb3htainmpkasjk05c
+5fc8723bbee8   nginx:latest   "/docker-entrypoint.…"   3 minutes ago   Up 3 minutes   80/tcp    hopeful_aryabhata.5.xstowh6vg8e70gpwh9fd8a8h2
+d61e0f819454   nginx:latest   "/docker-entrypoint.…"   3 minutes ago   Up 3 minutes   80/tcp    hopeful_aryabhata.2.wcrwgil66b6n2k8qvpbowlls7
+6f6d16fe3a60   nginx:latest   "/docker-entrypoint.…"   3 minutes ago   Up 3 minutes   80/tcp    hopeful_aryabhata.4.uqqvnqbaxcwqh5reknik0xqo0
+def35318ad96   nginx:latest   "/docker-entrypoint.…"   3 minutes ago   Up 3 minutes   80/tcp    hopeful_aryabhata.3.wp8512qxphqvg2sdu3128heoz
+
+
+##########################################################################################################
+Kubernetes Installation
+##########################################################################################################
+       sudo apt install snapd
+       sudo systemctl enable --now snapd
+       sudo snap install microk8s --classic --channel=1.28
+       sudo usermod -aG microk8s $USER
+       sudo chown -fR $USER ~/.kube
+       su -$USER
+  380  microk8s status --wait-ready
+  381  microk8s kubectl get nodes
+  382  microk8s kubectl get services
+  383  echo "alias kubectl='microk8s kubectl'" >> ~/.bashrc
+  385  source ~/.bashrc
+  386  kubectl get nodes
+  387  history

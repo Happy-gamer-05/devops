@@ -1,0 +1,147 @@
+ 1  passwd
+    2  exit
+    3  su du
+    4  su d1
+    5  userdel
+    6  userdel d1
+    7  useradd d1
+    8  passwd d1
+    9  su d1
+   10  userdel d1
+   11  adduser d1
+   12  su d1
+   13  group $USER
+   14  groups $USER
+   15  docker ps
+   16  docker run ubuntu
+   17  docker pd
+   18  docker ps\
+   19  docker ps
+   20  clear
+   21  docker run ubuntu
+   22  docker ps
+   23  docker container list
+   24  clear
+   25  docker run -it ubuntu
+   26  clear
+   27  docker run -it ubuntu
+   28  docker run -dit ubuntu
+   29  docker container list
+   30  docker exec -it ad /bin/bash
+   31  docker stop ad
+   32  docker container list
+   33  clear
+   34  docker run -dit ubuntu
+   35  docker container list
+   36  docker stop sad_curie
+   37  docker container list
+   38  docker images
+   39  docker run -dit ubuntu
+   40  docker container list
+   41  docker inspect 7f
+   42  clear
+   43  docker stop 7f
+   44  docker container list
+   45  docker pull nginx
+   46  docker imag
+   47  docker images
+   48  docker system df
+   49  docker run -dit --name=my_ubuntu ubuntu
+   50  docker run -dit --name=another_ubuntu ubuntu
+   51  docker container list
+   52  clear
+   53  docker container list
+   54  docker stop fa
+   55  docker stop ed
+   56  docker run --name my-nginx -d -p 8080:80 nginx
+   57  docker logs aa
+   58  docker run -d -p 8888:80 tomcat:8
+   59  docker login
+   60  docker run -d -p 8888:80 tomcat:8
+   61  docker login -u Happygamer05
+   62  docker images
+   63  docker import mysql_8.tar mysql:8
+   64  docker import /home/download/mysql_8.tar mysql:8
+   65  docker import /home/ditiss/Downloads/tar_files-20250501T091847Z-001/tar_files/mysql_8.tar mysql:8
+   66  docker images
+   67  docker import /home/ditiss/Downloads/tar_files-20250501T091847Z-001/tar_files/mysql.tar mysql
+   68  clear
+   69  docker import /home/ditiss/Downloads/tar_files-20250501T091847Z-001/tar_files/busybox.tar busybox
+   70  docker import /home/ditiss/Downloads/tar_files-20250501T091847Z-001/tar_files/python.tar python
+   71  docker import /home/ditiss/Downloads/tar_files-20250501T091847Z-002/tar_files/httpd.tar httpd
+   72  docker import /home/ditiss/Downloads/tar_files-20250501T091847Z-002/tar_files/openjdk.tar openjdk
+   73  docker import /home/ditiss/Downloads/tar_files-20250501T091847Z-002/tar_files/tomcat.tar tomcat
+   74  clear
+   75  docker volumen create mysql-data
+   76  docker volume create mysql-data
+   77  docker run -d --name my-mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=cdac -v mysql-data:/var/lib/mysql -p 3306:3306 mysql:8
+   78  docker pull mysql:8
+   79  systemctl status docker
+   80  clear
+   81  docker run -d --name my-mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=cdac -v mysql-data:/var/lib/mysql -p 3306:3306 mysql:8
+   82  docker image
+   83  docker images
+   84  docker run -d --name my-mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=cdac -v mysql-data:/var/lib/mysql -p 3306:3306 mysql
+   85* docker logs my-
+   86  docker run python
+   87  doker rmi mysql:8
+   88  docker rmi mysql:8
+   89  docker image prune
+   90  docker images
+   91  docker run mysql
+   92  docker run busybox
+   93  docker start\ busybox
+   94  docker start busybox
+   95  docker run ubuntu
+   96  docker run ef
+   97  clear
+   98  docker ps -a
+   99  docker rm ww
+  100  docker rm ee
+  101  docker rm fa
+  102  docker rm ed
+  103  docker ps -a
+  104  docker rm 7f
+  105  docker rm 3f
+  106  docker rm ad
+  107  docker rm 48
+  108  docker rm 24
+  109  docker rm ca
+  110  docker rm c6
+  111  docker rm 3b
+  112  docker rm 4b
+  113  docker ps -a
+  114  clear
+  115  docker images
+  116  docker rmi ef
+  117  docker rmi 95
+  118  docker rmi d6
+  119  docker rmi 99
+  120  docker rmi 52
+  121  docker rmi 06
+  122  docker image prune
+  123  docker images
+  124  docker pull mysql
+  125  clear
+  126  docker login --username=Happygamer05
+  127  clear
+  128  docker load -i /home/ditiss/Downloads/mysql_8.tar 
+  129  docker run -d --name my-mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=cdac -v mysql-data:/var/lib/mysql -p 3306:3306 mysql:8
+  130  use cdac
+  131  use cdac;
+  132  clear
+  133  docker ps
+  134  docker start d1
+  135  docker run -dit --name my-mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=cdac -v mysql-data:/var/lib/mysql -p 3306:3306 mysql:8
+  136  docker stop d1
+  137* 
+  138  docker run -dit --name my-mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=cdac -v mysql-data:/var/lib/mysql -p 3306:3306 mysql:8
+  139  use cdac
+  140  docker exec -it my-mysql mysql /bin/bash
+  141  docker exec -it my-mysql mysql /bin/bash -u root
+  142  docker exec -it my-mysql mysql -u root -p
+  143  docker stop my-mysql
+  144  docker rm my-mysql
+  145  docker ps -a
+  146  docker stop aa
+  147  history

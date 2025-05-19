@@ -1,0 +1,148 @@
+359  sudo apt-get update
+  360  sudo apt install frontconfig openjdk-17-jre
+  361  sudo apt install fontconfig openjdk-17-jre
+  362  sudo apt install openjdk-17-jdk-headless
+  363  sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+  364  echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+  365  sudo apt-get update sudo apt-get install jenkins
+  366  sudo apt-get update
+  367  sudo systemctl enable jenkins
+  368  sudo systemctl start jenkins
+  369  sudo systemctl status jenkins
+  370  sudo apt-get update
+  371  cat /var/lib/jenkins/secrets/initialAdminPassword
+  372  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+  373  cat /tmp//info 
+  374  history
+
+##############################################################################################
+pipeline {
+    agent any
+
+    stages {
+        stage('Emptying Workspace') {
+            steps{
+                cleanWs()
+            }
+        }
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+                
+                sh 'mkdir -p assemble'
+                sh 'touch assemble/computer.txt'
+                sh 'echo "MotherBoard" >> assemble/computer.txt'
+                sh 'cat assemble/computer.txt'
+                sh 'echo "Dispay" >> assemble/computer.txt'
+                sh 'cat assemble/computer.txt'
+            }
+        }
+    }
+    stage('Test') {
+        steps {
+            echo 'Testing the new Laptop'
+            sh 'Test -f assemble/computer.txt'
+        }
+    }
+    
+    post{
+        success{
+            archiveArtifacts artifacts: 'assemble/**'
+            }
+    }
+}
+########################################################################################################
+GitHub		
+######################
+
+
+##############################################################################################
+Lab 5
+##########
+
+itiss@Ubuntu-pki:~$ nano mydepl1.yaml 
+ditiss@Ubuntu-pki:~$ kubectl apply -f mydepl1.yaml
+deployment.apps/mynginx-deploy-1 unchanged
+service/myser1 created
+ditiss@Ubuntu-pki:~$ kubectl get deploy
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+mynginx-deploy-1   2/2     2            2           21m
+ditiss@Ubuntu-pki:~$ kubectl get pod
+NAME                                READY   STATUS    RESTARTS   AGE
+mynginx-deploy-1-64ddf945f5-jhghj   1/1     Running   0          21m
+mynginx-deploy-1-64ddf945f5-x4thw   1/1     Running   0          21m
+ditiss@Ubuntu-pki:~$ kubectl get services
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP          71m
+myser1       NodePort    10.152.183.198   <none>        8000:30025/TCP   60s
+ditiss@Ubuntu-pki:~$ kubectl get nodes -o wide
+NAME         STATUS   ROLES    AGE   VERSION   INTERNAL-IP       EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+ubuntu-pki   Ready    <none>   72m   v1.32.3   192.168.233.161   <none>        Ubuntu 24.04.2 LTS   6.11.0-24-generic   containerd://1.6.36
+ditiss@Ubuntu-pki:~$ kubectl get pods -o wide
+NAME                                READY   STATUS    RESTARTS   AGE   IP            NODE         NOMINATED NODE   READINESS GATES
+mynginx-deploy-1-64ddf945f5-jhghj   1/1     Running   0          28m   10.1.123.68   ubuntu-pki   <none>           <none>
+mynginx-deploy-1-64ddf945f5-x4thw   1/1     Running   0          28m   10.1.123.69   ubuntu-pki   <none>           <none>
+ditiss@Ubuntu-pki:~$ kubectl exec -it <pod-name> -- /bin/sh
+-bash: pod-name: No such file or directory
+ditiss@Ubuntu-pki:~$ kubectl exec -it mynginx-deploy-1-64ddf945f5-jhghj -- /bin/sh
+# curl http://myser1:8000                            
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+# exit
+ditiss@Ubuntu-pki:~$ cat mydepl1.yaml 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginx-deploy-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mynginxapp
+  template:
+    metadata:
+      labels:
+        app: mynginxapp
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myser1
+spec:
+    type: NodePort
+    selector:
+      app: mynginxapp
+    ports:
+      - port: 8000
+        targetPort: 80
+        nodePort: 30025
+ditiss@Ubuntu-pki:~$ 
+

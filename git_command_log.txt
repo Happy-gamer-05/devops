@@ -1,0 +1,47 @@
+ git init
+  504  tree .git/
+  505  ls .gi`
+  506  ls .git
+  507  git staus
+  508  git status
+  509  git branch
+  510  touch file1.txt
+  511  ls
+  512  vi file1.txt
+  513  git status
+  514  git add  --all
+  515  git status
+  516  git checkout  file1.txt
+  517  git status
+  518  git rm --cached file1.txt
+  519  ls
+  520  git staus
+  521  git status
+  522  git add file1.txt
+  523  git staus
+  524  git status
+  525  vi file1.txt
+  526  git status
+  527  rm file1.txt
+  528  git status
+  529  ls
+  530  git restore file1.txt
+  531  git status
+  532  git commit
+  533  git staus
+  534  git status
+  535  git log
+  536  git log --oneline
+  537  git remote add origin https://github.com/harry/myfirstrepo1.git
+  538  git remote -v
+  539  git branch
+  540  git branch -a
+  541  git branch -M master
+  542  git branch
+  543  git push -u origin master
+  544  git branch -a
+  545  ls
+  546  git pull
+  547  git log --oneline
+  548  git log
+  549  history
